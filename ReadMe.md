@@ -1,4 +1,4 @@
-# Testing framework for the basic verification flow
+# Testing framework
 
 
 ## Technologies used
