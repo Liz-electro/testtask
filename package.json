@@ -1,0 +1,19 @@
+{"name": "testtask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:report": "cypress run --reporter mochawesome",
+    "cy:open": "./node_modules/.bin/cypress open",
+    "cy:run": "./node_modules/.bin/cypress open"
+  },
+  "keywords": [],
+  "author": "Elizaveta Miroshnik",
+  "license": "ISC",
+  "devDependencies": {
+    "mochawesome": "^7.1.3"
+  },
+  "dependencies": {
+    "cypress": "^10.0.2"
+  }
+}
