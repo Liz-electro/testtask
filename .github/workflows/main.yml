@@ -4,11 +4,13 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v4
+      - name: Checkout
+      uses: actions/checkout@v3
+        -
+      - name Cypress run
+      uses: cypress-io/github-action@v4
         with:
           browser: chrome
           headless: true
-        env:
-        username: ${{ secrets.CYPRESS_ENV_USERNAME }}
-        password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
+          env:
+            'username: ${{ secrets.CYPRESS_ENV_USERNAME }}, password: ${{ secrets.CYPRESS_ENV_PASSWORD }}'
