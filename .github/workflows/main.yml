@@ -1,15 +1,14 @@
 name: End-to-end tests
-on: [push]
+on: [ push ]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-     - name: setup npm package
-        run: npm install
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        env: 
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+          headless: true
+        env:
         username: ${{ secrets.CYPRESS_ENV_USERNAME }}
         password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
