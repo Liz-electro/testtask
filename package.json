@@ -1,11 +1,12 @@
-{"name": "testtask",
+{
+  "name": "testtask",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "cy:report": "cypress run --reporter mochawesome",
     "cy:open": "./node_modules/.bin/cypress open",
-    "cy:run": "./node_modules/.bin/cypress open"
+    "cy:run": "./node_modules/.bin/cypress run"
   },
   "keywords": [],
   "author": "Elizaveta Miroshnik",
