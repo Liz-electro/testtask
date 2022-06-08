@@ -20,7 +20,7 @@ describe('Test add new customer functionality', () => {
     });
 
 
-    it.only('Customer with all the fields should be saved', () => {
+    it('Customer with all the fields should be saved', () => {
         customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, testdata.email,
             testdata.phone, testdata.comment);
         customer.wasSaved();
