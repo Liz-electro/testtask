@@ -8,6 +8,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Cypress run
         uses: cypress-io/github-action@v4
-    env:
-      username: ${{ secrets.CYPRESS_ENV_USERNAME }}
-      password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
+      env:
+        username: ${{secrets.CYPRESS_ENV_USERNAME}}
+        password: ${{secrets.CYPRESS_ENV_PASSWORD}}
