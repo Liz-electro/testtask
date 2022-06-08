@@ -12,6 +12,6 @@ jobs:
         with:
           browser: chrome
           headless: true
-        env:
-            username: ${{ secrets.CYPRESS_ENV_USERNAME }}
-            password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
+    env:
+      username: ${{ secrets.CYPRESS_ENV_USERNAME }}
+      password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
