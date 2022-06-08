@@ -34,6 +34,35 @@ Cypress.Commands.add('loginViaUI', (
 });
 
 Cypress.Commands.add('addNewCustomer', () => {
+    cy.visit('https://factory.katanamrp.com/sales');
     cy.get('#globalAdd').click();
     cy.get('#add-customer').click();
+})
+
+Cypress.Commands.add('addNewCustomerViaRequest', () => {
+    return cy.request({
+        url: 'https://customers.katanamrp.com/api/customers',
+        method: 'POST',
+        headers: {
+            'content-type': "application/json",
+            Authorization: "Bearer ${Cypress.env('token')}",
+            origin: 'https://katanamrp.com',
+            referer: "https://katanamrp.com/"
+        },
+        body: {"addresses": [], "name": "test"},
+    })
+
+    Cypress.Commands.add('deleteCustomers', () => {
+        return cy.request({
+            url: 'https://customers.katanamrp.com/api/customers',
+            method: 'POST',
+            headers: {
+                'content-type': "application/json",
+                Authorization: "Bearer ${Cypress.env('token')}",
+                origin: 'https://katanamrp.com',
+                referer: "https://katanamrp.com/"
+            },
+            body: {"addresses": [], "name": "test"},
+        })
+})
 })

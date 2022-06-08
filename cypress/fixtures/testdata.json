@@ -1,0 +1,8 @@
+{
+  "firstName": "FirstName",
+  "lastName": "LastName",
+  "companyName": "CompanyName",
+  "email": "test@test.com",
+  "phone": "+123456789",
+  "comment": "Fixtures are a great way to mock data for responses to routes"
+}

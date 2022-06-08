@@ -2,12 +2,9 @@ const {defineConfig} = require("cypress");
 
 module.exports = defineConfig({
     e2e: {
-        baseUrl: 'https://factory.katanamrp.com/',
         env: {
-            username: "",
-            password: "",
-            incorrectPassword: "test"
-        },
+            token: ''},
+        baseUrl: 'https://factory.katanamrp.com/',
         reporter: 'mochawesome',
         reporterOptions: {
             overwrite: "false",
@@ -18,7 +15,6 @@ module.exports = defineConfig({
             autoOpen: "false",
             charts: "true",
             code: "false"
-        },
-        experimentalSessionAndOrigin: true
+        }
     }
 });
