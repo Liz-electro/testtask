@@ -1,4 +1,6 @@
-# Testing framework
+# Testing framework for Customer functionality
+
+[![Cypress Tests](https://github.com/Liz-electro/testtask/actions/workflows/main.yml/badge.svg)](https://github.com/Liz-electro/testtask/actions/workflows/main.yml)
 
 ## Technologies used
 
@@ -15,16 +17,19 @@ Located:
 ## How to run Cypress tests in cmd
 
 ```sh
-./node_modules/.bin/cypress run --env "username={$email},password={$password}"   
+npx cypress run --env "username={$email},password={$password}"   
 ```
 
 ## How to run Cypress tests in Browser
 
 ```sh
-./node_modules/.bin/cypress open --env "username={$email},password={$password}"
+npx cypress run --env "username={$email},password={$password}"
 ```
 
 ## Reporting
+```sh
+npm run cy:report --env "username={$email},password={$password}"
+```
 
 /reports/...
 
