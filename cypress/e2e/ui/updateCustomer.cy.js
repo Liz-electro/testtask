@@ -1,9 +1,9 @@
-import customerPage from "../../pages/customerPage";
-import navigationPanel from "../../pages/navigationPanel";
+import CustomerPage from "../../pages/CustomerPage";
+import NavigationPanel from "../../pages/NavigationPanel";
 import {customersAPIUrl} from "../../fixtures/SiteMap";
 
-const customer = new customerPage();
-const navigator = new navigationPanel();
+const customer = new CustomerPage();
+const navigator = new NavigationPanel();
 
 describe('Test delete a customer functionality', () => {
     let testdata;
@@ -20,14 +20,8 @@ describe('Test delete a customer functionality', () => {
     });
 
     it('Patch request should be sent on customer info update', () => {
-        cy.intercept('POST', customersAPIUrl).as('customerId');
+        cy.intercept('PATCH', customersAPIUrl + '/*').as('customerUpdate');
         customer.fillDisplayName(testdata.firstName);
-        cy.wait('@customerId')
-            .its('response')
-            .its('body')
-            .then((body) => {
-                cy.intercept('PATCH', customersAPIUrl + body.id).as('customerUpdate');
-            });
 
         customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, testdata.email,
             testdata.phone, testdata.comment);

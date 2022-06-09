@@ -1,11 +1,11 @@
-import customerPage from "../../pages/customerPage";
-import navigationPanel from "../../pages/navigationPanel";
+import CustomerPage from "../../pages/CustomerPage";
+import NavigationPanel from "../../pages/NavigationPanel";
+import CustomersPage from "../../pages/CustomersPage";
 import {customersAPIUrl} from "../../fixtures/SiteMap";
-import customersPage from "../../pages/customersPage";
 
-const customer = new customerPage();
-const navigator = new navigationPanel();
-const customers = new customersPage();
+const customer = new CustomerPage();
+const navigator = new NavigationPanel();
+const customers = new CustomersPage();
 
 describe('Test add new customer functionality', () => {
     let testdata;
@@ -22,7 +22,7 @@ describe('Test add new customer functionality', () => {
     });
 
 
-    it('Customer with all the fields should be saved', () => {
+    it('Customer with all the fields should be saved and displayed on the Customers page', () => {
         customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, testdata.email,
             testdata.phone, testdata.comment);
         customer.wasSaved();
@@ -31,14 +31,16 @@ describe('Test add new customer functionality', () => {
     });
 
 
-    it('Customer with not filled Display name should not be created', () => {
+    it('Customer with not filled Display name should not be saved', () => {
         customer.fillDisplayName('');
         customer.hasNotFilledDisplayName();
         customer.wasNotSaved();
     });
 
     it('Email should be validated', () => {
-        customer.fillEmail('test');
+        customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, 'test',
+            testdata.phone, testdata.comment);
+        customer.hasIncorrectEmail();
         customer.wasNotSaved();
     });
 
@@ -58,7 +60,7 @@ describe('Test add new customer functionality', () => {
             });
     });
 
-    it('URL should be changed to the id', () => {
+    it('Saved customer page url should include customerId', () => {
         cy.intercept('POST', customersAPIUrl).as('customer');
         customer.fillTheForm(testdata.firstName, '', '', '', '', '');
 

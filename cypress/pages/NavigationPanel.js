@@ -1,4 +1,4 @@
-class navigationPanel {
+class NavigationPanel {
     addNewCustomer(){
         cy.get("#globalAdd").click();
         cy.get("#add-customer").click();
@@ -6,4 +6,4 @@ class navigationPanel {
 
 }
 
-export default navigationPanel
+export default NavigationPanel

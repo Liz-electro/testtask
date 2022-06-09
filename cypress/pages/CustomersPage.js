@@ -13,6 +13,10 @@ class customersPage {
     containsCustomerName(customerName){
         cy.get('[data-testid="cellName"]').contains(customerName);
     }
+
+    doesNotContainCustomerName(customerName){
+        cy.contains(customerName).should('not.exist');
+    }
 }
 
 export default customersPage

@@ -66,3 +66,4 @@ Cypress.Commands.add('deleteCustomers', () => {
         body: {"addresses": [], "name": "test"},
     });
 });
+
