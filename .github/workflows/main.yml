@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cypress run
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v3
         env:
           username: ${{ secrets.CYPRESS_ENV_USERNAME }}
           password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
