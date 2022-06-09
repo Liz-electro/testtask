@@ -12,5 +12,5 @@ jobs:
         uses: cypress-io/github-action@v3
         timeout-minutes: 10
         env:
-          username: ${{ secrets.CYPRESS_ENV_USERNAME }}
-          password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
+          CYPRESS_username: ${{ secrets.CYPRESS_ENV_USERNAME }}
+          CYPRESS_password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
