@@ -34,7 +34,6 @@ describe('Test delete a customer functionality', () => {
             .its('body')
             .then((body) => {
                 expect(body.firstName).to.equal(testdata.firstName);
-                expect(body.lastName).to.equal(testdata.lastName);
             });
     });
 });
