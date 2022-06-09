@@ -8,8 +8,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Faker install
-        uses: npm install Faker --save-dev
       - name: Cypress run
         uses: cypress-io/github-action@v3
         timeout-minutes: 10
