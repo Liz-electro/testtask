@@ -26,7 +26,6 @@ describe('Test add new customer functionality', () => {
         customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, testdata.email,
             testdata.phone, testdata.comment);
         customer.wasSaved();
-        customers.open();
         customers.containsCustomerName(testdata.firstName);
     });
 

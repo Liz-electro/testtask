@@ -11,6 +11,7 @@ class customersPage {
     }
 
     containsCustomerName(customerName){
+        this.open();
         cy.contains(customerName).should('exist');
     }
 
