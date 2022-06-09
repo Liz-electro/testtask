@@ -3,9 +3,8 @@ const {defineConfig} = require("cypress");
 module.exports = defineConfig({
     e2e: {
         env: {
-            username: 'miroshnik.liza@gmail.com',
-            password: '',
-            token: ''},
+            username: '',
+            password: ''},
         baseUrl: 'https://factory.katanamrp.com/',
         reporter: 'mochawesome',
         reporterOptions: {

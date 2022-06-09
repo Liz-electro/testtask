@@ -9,10 +9,17 @@
 - Mochawesome
 
 ### Description
+This is a testing framework for Katana application.
+Partially covered Create customer, Update customer and Delete customer functionalities.
 
-Tests were written with Cypress.
-Located:
-```./cypress/```
+Environment variables should be specified to run the framework:
+**username={$email},password={$password}.**
+
+Another way is to add them to **cypress.config.js** file:
+>env: {
+username: '{$email}',
+password: '{$password}'}
+
 
 ## How to run Cypress tests in cmd
 
@@ -30,7 +37,7 @@ npx cypress run --env "username={$email},password={$password}"
 ```sh
 npm run cy:report --env "username={$email},password={$password}"
 ```
-
+```sh
 /reports/...
-
+```
 
