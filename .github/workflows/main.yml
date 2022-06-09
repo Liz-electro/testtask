@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Faker
-        run: npm:Faker@^0.7.2 install
+        run: npm install
       - name: Cypress run
         uses: cypress-io/github-action@v3
         timeout-minutes: 10
