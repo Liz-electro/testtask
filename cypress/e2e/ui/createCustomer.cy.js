@@ -1,9 +1,11 @@
 import customerPage from "../../pages/customerPage";
 import navigationPanel from "../../pages/navigationPanel";
-import {customersUrl} from "../../fixtures/SiteMap";
+import {customersAPIUrl} from "../../fixtures/SiteMap";
+import customersPage from "../../pages/customersPage";
 
 const customer = new customerPage();
 const navigator = new navigationPanel();
+const customers = new customersPage();
 
 describe('Test add new customer functionality', () => {
     let testdata;
@@ -24,8 +26,8 @@ describe('Test add new customer functionality', () => {
         customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, testdata.email,
             testdata.phone, testdata.comment);
         customer.wasSaved();
-        cy.visit('https://factory.katanamrp.com/contacts/customers');
-        cy.get('[data-testid="cellName"]').contains(testdata.firstName);
+        customers.open();
+        customers.containsCustomerName(testdata.firstName);
     });
 
 
@@ -41,9 +43,8 @@ describe('Test add new customer functionality', () => {
     });
 
     it('Post request should be sent with all the customer details when first and last names were provided', () => {
-        cy.intercept('POST', customersUrl).as('customer');
-        customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, testdata.email,
-            testdata.phone, testdata.comment);
+        cy.intercept('POST', customersAPIUrl).as('customer');
+        customer.fillTheForm(testdata.firstName, '', '', '', '', '');
 
         cy.wait('@customer')
             .its('response')
@@ -53,8 +54,19 @@ describe('Test add new customer functionality', () => {
             .its('body')
             .then((body) => {
                 expect(body.firstName).to.equal(testdata.firstName);
-                expect(body.lastName).to.equal(testdata.lastName);
-                expect(body.name).to.equal(testdata.firstName + ' ' + testdata.lastName);
+                expect(body.name).to.equal(testdata.firstName);
+            });
+    });
+
+    it('URL should be changed to the id', () => {
+        cy.intercept('POST', customersAPIUrl).as('customer');
+        customer.fillTheForm(testdata.firstName, '', '', '', '', '');
+
+        cy.wait('@customer')
+            .its('response')
+            .its('body')
+            .then((body) => {
+                cy.location("pathname").should("equal", '/customer/' + body.id);
             });
     });
 });

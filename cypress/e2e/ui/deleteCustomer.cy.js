@@ -2,14 +2,14 @@
 import customersPage from "../../pages/customersPage";
 
 const customers = new customersPage();
-
+import {customersUrl} from "../../fixtures/SiteMap";
 
 describe('Test delete a customer functionality', () => {
 
     before(() => {
         cy.visit('/login');
         cy.loginViaUI();
-        cy.visit('https://factory.katanamrp.com/contacts/customers');
+        cy.visit(customersUrl);
     });
 
     it('User should have a possibility to delete a customer from Customers page using Bulk', () => {
@@ -23,6 +23,7 @@ describe('Test delete a customer functionality', () => {
     });
 
     it('User should have a possibility to delete a customer from Customer page', () => {
+
 
     });
 

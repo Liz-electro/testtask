@@ -1,6 +1,6 @@
 import customerPage from "../../pages/customerPage";
 import navigationPanel from "../../pages/navigationPanel";
-import {customersUrl} from "../../fixtures/SiteMap";
+import {customersAPIUrl} from "../../fixtures/SiteMap";
 
 const customer = new customerPage();
 const navigator = new navigationPanel();
@@ -19,25 +19,28 @@ describe('Test delete a customer functionality', () => {
         navigator.addNewCustomer();
     });
 
-    it('Patch request should be sent with all the customer details after names were provided', () => {
-        let customerId;
+    it('Patch request should be sent on customer info update', () => {
+        cy.intercept('POST', customersAPIUrl).as('customerId');
         customer.fillDisplayName(testdata.firstName);
-        customerId = cy.location("pathname");
-        cy.log(customerId);
-        cy.intercept('PATCH', customersUrl + '/' + customerId).as('customer');
+        cy.wait('@customerId')
+            .its('response')
+            .its('body')
+            .then((body) => {
+                cy.intercept('PATCH', customersAPIUrl + body.id).as('customerUpdate');
+            });
+
         customer.fillTheForm(testdata.firstName, testdata.lastName, testdata.companyName, testdata.email,
             testdata.phone, testdata.comment);
 
-        cy.wait('@customer')
+        cy.wait('@customerUpdate')
             .its('response')
             .then((response) => {
                 expect(response).to.have.property('statusCode', 200)
             })
             .its('body')
             .then((body) => {
-                expect(body.comment).to.equal(testdata.comment);
-                expect(body.email).to.equal(testdata.email);
-                expect(body.phone).to.equal(testdata.phone);
+                expect(body.firstName).to.equal(testdata.firstName);
+                expect(body.lastName).to.equal(testdata.lastName);
             });
     });
 });
