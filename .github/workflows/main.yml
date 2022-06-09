@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v3
+        timeout-minutes: 10
         env:
           username: ${{ secrets.CYPRESS_ENV_USERNAME }}
           password: ${{ secrets.CYPRESS_ENV_PASSWORD }}
